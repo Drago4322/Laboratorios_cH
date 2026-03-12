@@ -1,0 +1,39 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+class operadores_condicionales
+{
+    static void Main()
+    {
+        Console.WriteLine ("Cual es la temperatura del paciente: ");
+        double temperatura = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Cual es la presión sistólica: ");
+        double presion = Convert.ToDouble(Console.ReadLine());
+        if ((temperatura>39)||(presion >180))
+            {
+                Console.WriteLine("Temperatura: " + temperatura);
+                Console.WriteLine("Presion sistólica: " + presion);
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Triaje: Rojo(Critico)");
+                Console.WriteLine("Recomendación: Atención inmediata requerida.");
+            }
+        else if ((temperatura>38)||(presion >140))
+            {
+                Console.WriteLine("Temperatura: " + temperatura);
+                Console.WriteLine("Presion sistólica: " + presion);
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Triaje: Amarillo(Urgente)");
+                Console.WriteLine("Recomendación: Atención requerida.");
+            }
+        else
+            {
+                Console.WriteLine("Temperatura: " + temperatura);
+                Console.WriteLine("Presion sistólica: " + presion);
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Triaje: Verde(Estable)");
+                Console.WriteLine("Recomendación: Sintomas normales sin problemas.");
+            }
+    }
+}
