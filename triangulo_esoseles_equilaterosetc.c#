@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Clasificador de Triángulos ");
+
+        // Leemos los datos
+        Console.Write("Ingresa la longitud del lado A: ");
+        double ladoA = double.Parse(Console.ReadLine());
+
+        Console.Write("Ingresa la longitud del lado B: ");
+        double ladoB = double.Parse(Console.ReadLine());
+
+        Console.Write("Ingresa la longitud del lado C: ");
+        double ladoC = double.Parse(Console.ReadLine());
+
+        // Utilizamos la logica de clasificación
+        if (ladoA == ladoB && ladoB == ladoC)
+        {
+            Console.WriteLine("\nResultado: El triángulo es Equilátero (todos los lados son iguales).");
+        }
+        else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC)
+        {
+            Console.WriteLine("\nResultado: El triángulo es Isósceles (dos lados son iguales).");
+        }
+        else
+        {
+            Console.WriteLine("\nResultado: El triángulo es Escaleno (todos los lados son diferentes).");
+        }
+    }
+}
+
+
