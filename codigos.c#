@@ -1,0 +1,265 @@
+
+
+Codigo de matriz que realice una x.
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        //Creamos la imagen de la matriz
+        int[,] matriz = new int[4, 4]
+        {
+            {0,1,1,0},
+            {1,0,0,1},
+            {1,0,0,1},
+            {0,1,1,0},
+        };
+
+        //Le idicamos que mustre cada 
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+               if (matriz[i, j] == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("0 ");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write("1 ");
+                }
+            }
+            Console.WriteLine();
+        }
+        
+        Console.ResetColor(); // Volver al color por defecto
+    }
+}
+
+
+
+
+
+
+
+Código que identifique si un triángulos es isósceles, equilátero o escaleno 
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Clasificador de Triángulos ");
+
+        // Leemos los datos
+        Console.Write("Ingresa la longitud del lado A: ");
+        double ladoA = double.Parse(Console.ReadLine());
+
+        Console.Write("Ingresa la longitud del lado B: ");
+        double ladoB = double.Parse(Console.ReadLine());
+
+        Console.Write("Ingresa la longitud del lado C: ");
+        double ladoC = double.Parse(Console.ReadLine());
+
+        // Utilizamos la logica de clasificación
+        if (ladoA == ladoB && ladoB == ladoC)
+        {
+            Console.WriteLine("\nResultado: El triángulo es Equilátero (todos los lados son iguales).");
+        }
+        else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC)
+        {
+            Console.WriteLine("\nResultado: El triángulo es Isósceles (dos lados son iguales).");
+        }
+        else
+        {
+            Console.WriteLine("\nResultado: El triángulo es Escaleno (todos los lados son diferentes).");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+Código que calcule el área de 1000 triángulos.
+
+using System;
+
+namespace CalculadorTriangulos
+{
+    class Program
+    {
+        static void Main()
+        {
+            Random rnd = new Random();
+            
+            for (int i = 1; i <= 1000; i++)
+            {
+                double a = rnd.Next(10, 50);
+                double b = rnd.Next(10, 50);
+                double c = rnd.Next((int)Math.Abs(a - b) + 1, (int)(a + b));
+
+                double angA = Calcular(a, b, c);
+                double angB = Calcular(b, a, c);
+                double angC = 180 - angA - angB;
+
+                if (i <= 5 || i > 995)
+                {
+                    Console.WriteLine($"T{i:000}: Lados({a},{b},{c}) -> Ángulos: {angA:F1}°, {angB:F1}°, {angC:F1}°");
+                }
+                else if (i == 6) Console.WriteLine("...");
+            }
+        }
+
+        static double Calcular(double a, double b, double c)
+        {
+            double res = (b * b + c * c - a * a) / (2 * b * c);
+            return Math.Acos(res) * (180.0 / Math.PI);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+Código para calcular el salario de 50 empleados.
+
+
+using System;
+
+public class nomina
+{
+    public string nombre;
+    public int cedula;
+    public int horas_trabajadas;
+    public double valor_h;
+    public int cantidad_h_extras;
+    public double valor_h_extras;
+    public int empleados = 50;
+
+    public void salario()
+    {
+        double s_base = horas_trabajadas * valor_h;
+        Console.WriteLine($"el salario del empleado {nombre} es:${s_base}");
+    }
+
+    public void horas_extras()
+    {
+        Console.WriteLine($"Las ganancias de las horas extras son:${cantidad_h_extras * valor_h_extras}");
+    }
+
+    public void eps_fp()
+    {
+        double base_calculo = valor_h * horas_trabajadas;
+        double eps = base_calculo * 0.04;
+        double fp = base_calculo * 0.04;
+        Console.WriteLine($"las deduciones por parte de la eps son:${eps}");
+        Console.WriteLine($"las deduciones por parte de la fp son:${fp}");
+    }
+
+    public void salario_completo()
+    {
+        double salario_T = (horas_trabajadas * valor_h) - ((horas_trabajadas * valor_h) * 0.08);
+        Console.WriteLine($"El salario que se gano el empleado {nombre} con todas las extras y deducciones es:${salario_T}");
+    }
+
+    static void Main()
+    {
+        int i = 0;
+        int max = 50;
+
+        string[] nombres = new string[max];
+        int[] cedulas = new int[max];
+        int[] horas = new int[max];
+        double[] valor_horas = new double[max];
+        double[] salarios = new double[max];
+        double[] horas_extras = new double[max];
+        double[] valor_horas_extras = new double[max];
+        double[] deduciones_eps = new double[max];
+        double[] deduciones_fp = new double[max];
+        double[] salarios_totales = new double[max];
+
+        while (i < max)
+        {
+            nomina emp = new nomina();
+            Console.WriteLine($"--- Registro Empleado {i + 1} ---");
+
+            Console.Write("Nombre: ");
+            nombres[i] = Console.ReadLine();
+            emp.nombre = nombres[i];
+
+            Console.Write("Cédula: ");
+            cedulas[i] = int.Parse(Console.ReadLine());
+            emp.cedula = cedulas[i];
+
+            Console.Write("Horas trabajadas: ");
+            horas[i] = int.Parse(Console.ReadLine());
+            emp.horas_trabajadas = horas[i];
+
+            Console.Write("Valor hora: ");
+            valor_horas[i] = double.Parse(Console.ReadLine());
+            emp.valor_h = valor_horas[i];
+
+            Console.Write("Cantidad Horas Extras: ");
+            emp.cantidad_h_extras = int.Parse(Console.ReadLine());
+            horas_extras[i] = emp.cantidad_h_extras;
+
+            Console.Write("Valor Hora Extra: ");
+            emp.valor_h_extras = double.Parse(Console.ReadLine());
+            valor_horas_extras[i] = emp.valor_h_extras;
+
+            emp.salario();
+            emp.horas_extras();
+            emp.eps_fp();
+
+            salarios[i] = emp.horas_trabajadas * emp.valor_h;
+            deduciones_eps[i] = salarios[i] * 0.04;
+            deduciones_fp[i] = salarios[i] * 0.04;
+
+            double total_extras = horas_extras[i] * valor_horas_extras[i];
+            salarios_totales[i] = (salarios[i] + total_extras) - (deduciones_eps[i] + deduciones_fp[i]);
+
+            i++;
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("\n========================== RESUMEN DE NÓMINA ==========================");
+        Console.WriteLine("NOMBRE            CÉDULA      BASE      EXTRAS    EPS       FP        TOTAL");
+        Console.WriteLine("---------------------------------------------------------------------------");
+
+        for (int j = 0; j < max; j++)
+        {
+            double total_extras_fila = horas_extras[j] * valor_horas_extras[j];
+
+            if (salarios_totales[j] < 2000000)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{nombres[j],-16} {cedulas[j],-10} {salarios[j],9:F2} {total_extras_fila,9:F2} {deduciones_eps[j],9:F2} {deduciones_fp[j],9:F2} {salarios_totales[j],9:F2}");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.WriteLine($"{nombres[j],-16} {cedulas[j],-10} {salarios[j],9:F2} {total_extras_fila,9:F2} {deduciones_eps[j],9:F2} {deduciones_fp[j],9:F2} {salarios_totales[j],9:F2}");
+            }
+        }
+
+        Console.WriteLine("===========================================================================");
+    }
+}
