@@ -1,0 +1,39 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+class Program
+{
+    static double CalcularDosis(double peso, double dosisPorKg)
+    {
+        double dosis = peso * dosisPorKg;
+        return dosis;
+    }
+
+    static void MostrarResultado(string nombre, double dosis)
+    {
+        Console.WriteLine("Paciente: " + nombre);
+        Console.WriteLine("Dosis calculada: " + dosis + " mg");
+    }
+
+    static void Main()
+    {
+        string nombre;
+        double peso;
+        double dosisPorKg;
+        double dosis;
+
+        Console.WriteLine("Ingrese el nombre del paciente: ");
+        nombre = Console.ReadLine();
+
+        Console.WriteLine("Ingrese el peso del paciente: ");
+        peso = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Ingrese la dosis por Kg: ");
+        dosisPorKg = Convert.ToDouble(Console.ReadLine());
+
+        dosis = CalcularDosis(peso, dosisPorKg);
+
+        MostrarResultado(nombre, dosis);
+    }
+}
