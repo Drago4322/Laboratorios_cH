@@ -1,0 +1,26 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+class sex
+{
+    static int Main()
+    {   
+        int turno = 0;
+        string opcion = "S";
+        while(opcion == "S")
+        {   
+            Console.WriteLine("Ingrese numero de turno: ");
+            turno = Convert.ToInt32(Console.ReadLine());
+            if (turno<=0)
+            {
+                Console.WriteLine("El turno debe ser mayor que 0");
+            }
+            Console.WriteLine("Desea continuar (S/N) ?: ");
+            opcion = Convert.ToString(Console.ReadLine());
+        }
+        return 0;
+    }
+        
+}
