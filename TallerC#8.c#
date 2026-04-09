@@ -1,0 +1,30 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int historia;
+        string opcion = "S";
+
+        while (opcion == "S")
+        {
+            try
+            {
+                Console.WriteLine("Ingrese el numero de historia clinica: ");
+                historia = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Numero ingresado correctamente: " + historia);
+            }
+            catch
+            {
+                Console.WriteLine("Error: Debe ingresar solo numeros");
+            }
+
+            Console.WriteLine("Desea continuar (S/N) ?: ");
+            opcion = Console.ReadLine();
+        }
+    }
+}
