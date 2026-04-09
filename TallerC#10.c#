@@ -1,0 +1,99 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+using System;
+using System.IO;
+
+class Usuario
+{
+    public string user = "admin";
+    public string pass = "123";
+
+    public bool Login(string u, string p)
+    {
+        if (u == user && p == pass)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
+class Cita
+{
+    public string nombre;
+    public string fecha;
+
+    public void Guardar()
+    {
+        StreamWriter sw = new StreamWriter("citas.txt", true);
+        sw.WriteLine("Paciente: " + nombre + " | Fecha: " + fecha);
+        sw.Close();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Usuario u = new Usuario();
+        string usuario;
+        string contraseña;
+        int opcion = 0;
+
+        Console.WriteLine("Usuario: ");
+        usuario = Console.ReadLine();
+
+        Console.WriteLine("Contraseña: ");
+        contraseña = Console.ReadLine();
+
+        if (u.Login(usuario, contraseña))
+        {
+            while (opcion != 3)
+            {
+                Console.WriteLine("1. Registrar cita");
+                Console.WriteLine("2. Ver citas");
+                Console.WriteLine("3. Salir");
+
+                try
+                {
+                    opcion = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Error: Ingrese un numero valido");
+                }
+
+                if (opcion == 1)
+                {
+                    Cita c = new Cita();
+
+                    Console.WriteLine("Nombre del paciente: ");
+                    c.nombre = Console.ReadLine();
+
+                    Console.WriteLine("Fecha de la cita: ");
+                    c.fecha = Console.ReadLine();
+
+                    c.Guardar();
+                }
+                else if (opcion == 2)
+                {
+                    if (File.Exists("citas.txt"))
+                    {
+                        string[] lineas = File.ReadAllLines("citas.txt");
+                        foreach (string l in lineas)
+                        {
+                            Console.WriteLine(l);
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Credenciales incorrectas");
+        }
+    }
+}
