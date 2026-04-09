@@ -1,0 +1,28 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+public class HelloWorld
+{
+    static int semana = 7;
+    static int vacunas = 0;
+    static int Contador = 0;
+    
+    float promedio;
+    static string[] dia = { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes","Sabado","Domingo" };
+    static void Main()
+    {
+        int i;
+        for (i = 0; i < semana; i++)
+        {
+        Console.WriteLine("Ingresa el numero totales de vacunas en el día "+ dia[i]+": ");
+        int vacunas = Convert.ToInt32(Console.ReadLine());
+        Contador = Contador + vacunas;
+        }
+        Console.WriteLine("El total de vacunas de la semana fueron: "+ Contador);
+        float promedio = Contador/semana;
+        Console.WriteLine("El Promedio de las vacunas de la semana fueron: "+ promedio);
+    }
+    
+}
